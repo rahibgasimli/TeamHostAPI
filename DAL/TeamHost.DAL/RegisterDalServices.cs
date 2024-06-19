@@ -12,6 +12,11 @@ namespace TeamHost.DAL
     {
         public static void RegisterServices(this WebApplicationBuilder builder)
         {
+
+            string? envVariable = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(envVariable);
+            Console.ResetColor();
             builder.Services.AddDbContext<AppDbContext>(opt =>
             {
                 opt.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
